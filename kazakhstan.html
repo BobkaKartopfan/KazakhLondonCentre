@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Kazakhstan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Overview of Kazakhstan — geography, history, culture and quick facts.">
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-text">
+            <h1><img src="images/logo.jpg" alt="Kazakh Centre Logo" class="logo"></h1>
+          <p class="subtitle" data-i18n="subtitle">Strengthening Kazakh Communities in London</p>
+        </div>
+        <div class="lang-select-wrap">
+          <label for="lang-select" class="sr-only">Language</label>
+          <select id="lang-select" aria-label="Language selector">
+            <option value="en">English</option>
+            <option value="kk">Қазақша</option>
+            <option value="ru">Русский</option>
+          </select>
+        </div>
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="nav.home">Home Page</a></li>
+            <li class="nav-item"><a href="cultural.html" class="nav-link" data-i18n="nav.infobook">Cultural Infobook</a></li>
+            <li class="nav-item"><a href="#footer" class="nav-link" data-i18n="nav.contact">Contact Us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2 data-i18n="kaz.title">About Kazakhstan</h2>
+        <p data-i18n="kaz.text">Below you are able to find multiple images and information about Kazakhstan, this page serves a visual introduction to the Kazakhstan's imagery, Cuisine and traditions.</p>
+
+        <!-- Image roulette: Big Almaty & Kaindy -->
+        <div class="image-roulette">
+          <div class="slides">
+             <div class="slide">
+              <img src="images/kaindy.jpg" alt="Kaindy Lake">
+              <div class="side-comment" data-i18n="slide.1">Kaindy Lake — submerged forest in turquoise water</div>
+            </div>
+            <div class="slide">
+              <img src="images/bigalmatylake.jpg" alt="Big Almaty Lake">
+              <div class="side-comment" data-i18n="slide.2">Big Almaty Lake — Alpine reservoir near Almaty</div>
+            </div>
+             <div class="slide">
+              <img src="images/AlmatySkyline.jpg" alt="Almaty Skyline">
+              <div class="side-comment" data-i18n="slide.3">Almaty Skyline — Cityscape of Kazakhstan's largest city</div>
+            </div>
+            <div class="slide">
+              <img src="images/kazakhstan-beshbarmak-scaled.jpg" alt="Beshbarmak">
+              <div class="side-comment" data-i18n="slide.4">Beshbarmak — traditional Kazakh dish</div>
+            </div>
+          </div>
+          <button class="slide-btn prev">‹</button>
+          <button class="slide-btn next">›</button>
+        </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="main-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <p>Building community, preserving culture, supporting students in Belgium</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="https://t.me/kazakcommunityuk" class="social-icon" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://www.instagram.com/londonkazakhcentre/" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Kazakh Centre In London. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // carousel behaviour
+      const carousel = document.querySelector('.image-roulette');
+      if (!carousel) return;
+      const slidesWrap = carousel.querySelector('.slides');
+      const slides = carousel.querySelectorAll('.slide');
+      const prev = carousel.querySelector('.prev');
+      const next = carousel.querySelector('.next');
+      let current = 0;
+      function show(n){
+        current = (n + slides.length) % slides.length;
+        slidesWrap.style.transform = `translateX(-${current * 100}%)`;
+      }
+      let timer = setInterval(()=> show(current + 1), 4000);
+      function resetTimer(){ clearInterval(timer); timer = setInterval(()=> show(current + 1), 4000); }
+      prev.addEventListener('click', ()=>{ show(current - 1); resetTimer(); });
+      next.addEventListener('click', ()=>{ show(current + 1); resetTimer(); });
+      // init
+      show(0);
+
+      // Simple i18n for this page
+      const translations = {
+        en: {
+          subtitle: 'Strengthening Kazakh Communities in London',
+          'nav.home': 'Home Page',
+          'nav.infobook': 'Cultural Infobook',
+          'nav.contact': 'Contact Us',
+          'kaz.title': 'About Kazakhstan',
+          'kaz.text': "Below you are able to find multiple images and information about Kazakhstan, this page serves a visual introduction to the Kazakhstan's imagery",
+          'slide.1': 'Kaindy Lake — submerged forest in turquoise water',
+          'slide.2': 'Big Almaty Lake — Alpine reservoir near Almaty',
+          'slide.3': "Almaty Skyline — Cityscape of Kazakhstan's largest city",
+          'slide.4': 'Beshbarmak — traditional Kazakh dish'
+        },
+        kk: {
+          subtitle: 'Лондондағы қазақ қоғамдастығын нығайту',
+          'nav.home': 'Басты бет',
+          'nav.infobook': 'Мәдени жинақ',
+          'nav.contact': 'Хабарласу',
+          'kaz.title': 'Қазақстан туралы',
+          'kaz.text': 'Бұл бетте Қазақстанға қатысты суреттер мен ақпарат бар — визуалды таныстыру ретінде қызмет етеді.',
+          'slide.1': 'Қайынды көлі — жұмсақ жасыл суда батып жатқан орман',
+          'slide.2': 'Үлкен Алматы көлі — Алматы маңындағы таулы су қоймасы',
+          'slide.3': 'Алматы силуэті — еліміздің ірі қаласының көрінісі',
+          'slide.4': 'Бешбармақ — дәстүрлі қазақ тағамы'
+        },
+        ru: {
+          subtitle: 'Укрепление казахских сообществ в Лондоне',
+          'nav.home': 'Главная',
+          'nav.infobook': 'Культурная справка',
+          'nav.contact': 'Связаться',
+          'kaz.title': 'О Казахстане',
+          'kaz.text': 'На этой странице представлены изображения и информация о Казахстане для визуального знакомства.',
+          'slide.1': 'Озеро Кайынды — затопленный лес в бирюзовой воде',
+          'slide.2': 'Большое Алматинское озеро — горное водохранилище рядом с Алматы',
+          'slide.3': 'Силуэт Алматы — городской пейзаж крупнейшего города Казахстана',
+          'slide.4': 'Бешбармак — традиционное казахское блюдо'
+        }
+      };
+
+      function applyLang(lang){
+        const maps = translations[lang] || translations.en;
+        document.querySelectorAll('[data-i18n]').forEach(el=>{
+          const key = el.getAttribute('data-i18n');
+          if (maps[key]) el.textContent = maps[key];
+        });
+        document.documentElement.lang = lang === 'en' ? 'en' : (lang === 'kk' ? 'kk' : 'ru');
+      }
+
+      const sel = document.getElementById('lang-select');
+      if (sel){
+        sel.addEventListener('change', ()=> applyLang(sel.value));
+        const saved = localStorage.getItem('siteLang') || 'en';
+        sel.value = saved;
+        applyLang(saved);
+        sel.addEventListener('change', ()=> localStorage.setItem('siteLang', sel.value));
+      }
+    })();
+  </script>
+
+</body>
+</html>

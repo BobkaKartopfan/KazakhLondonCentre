@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events — Kazakh Centre in London</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Upcoming events, meetups and language sessions organised by the Kazakh Centre in London.">
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-text">
+          <h1><img src="images/logo.jpg" alt="Kazakh Centre Logo" class="logo"></h1>
+          <p class="subtitle" data-i18n="subtitle">Strengthening Kazakh Communities in London</p>
+        </div>
+        <div class="lang-select-wrap">
+          <label for="lang-select" class="sr-only">Language</label>
+          <select id="lang-select" aria-label="Language selector">
+            <option value="en">English</option>
+            <option value="kk">Қазақша</option>
+            <option value="ru">Русский</option>
+          </select>
+        </div>
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="nav.home">Home Page</a></li>
+            <li class="nav-item"><a href="kazakhstan.html" class="nav-link" data-i18n="nav.kaz">About Kazakhstan</a></li>
+            <li class="nav-item"><a href="cultural.html" class="nav-link" data-i18n="nav.infobook">Cultural Infobook</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2>Upcoming Events</h2>
+        <p>Find our regular meetups, language sessions and cultural events below. If you'd like to suggest an event, contact us via the home page.</p>
+
+        <article class="event">
+          <h3>Meetup at the Embassy of Kazakhstan</h3>
+          <p><strong>When:</strong> First Saturday of each month, 18:00</p>
+          <p><strong>Where:</strong> Embassy of Kazakhstan in UK, London</p>
+          <p>Open informal meetup for members and friends — networking, conversation practice, and community updates.</p>
+        </article>
+
+        <h3>Submit an Event</h3>
+        <p>Email event details (title, date, location, short description, contact) to our organisers via the contact form on the home page.</p>
+      </div>
+    </section>
+  </main>
+
+<footer id="footer" class="main-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <p>Building community, preserving culture, supporting students in Belgium</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="https://t.me/kazakcommunityuk" class="social-icon" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://www.instagram.com/londonkazakhcentre/" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Kazakh Centre In London. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // language selection small script reused from other pages
+    const translations = { en:{ subtitle:'Strengthening Kazakh Communities in London' }, kk:{ subtitle:'Лондондағы қазақ қоғамдастығын нығайту' }, ru:{ subtitle:'Укрепление казахских сообществ в Лондоне' } };
+    function applyLang(lang){ const maps = translations[lang] || translations.en; document.querySelectorAll('[data-i18n]').forEach(el=>{ const key = el.getAttribute('data-i18n'); if (maps[key]) el.textContent = maps[key]; }); document.documentElement.lang = lang === 'en' ? 'en' : (lang === 'kk' ? 'kk' : 'ru'); }
+    const sel = document.getElementById('lang-select'); if (sel){ sel.addEventListener('change', ()=> applyLang(sel.value)); const saved = localStorage.getItem('siteLang') || 'en'; sel.value = saved; applyLang(saved); sel.addEventListener('change', ()=> localStorage.setItem('siteLang', sel.value)); }
+  </script>
+
+</body>
+</html>
