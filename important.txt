@@ -1,0 +1,21 @@
+<div class="event-card">
+        <div class="event-date">
+          <span class="day">11</span>
+          <span class="month">FEB</span>
+        </div>
+        <div class="event-details">
+          <h3>Event at the Embassy of Kazakhstan</h3>
+          <p><i class="far fa-clock"></i> 15:00 - 17:30</p>
+          <p><i class="fas fa-map-marker-alt"></i> Embassy of Kazakhstan in UK, London</p>
+          <a href="events.html" class="btn btn-small">Learn More</a>
+        </div>
+      </div>
+
+
+Event at main page      
+        <article class="event">
+          <h3>Meetup at the Embassy of Kazakhstan</h3>
+          <p><strong>When:</strong> First Saturday of each month, 18:00</p>
+          <p><strong>Where:</strong> Embassy of Kazakhstan in UK, London</p>
+          <p>Open informal meetup for members and friends — networking, conversation practice, and community updates.</p>
+        </article>
